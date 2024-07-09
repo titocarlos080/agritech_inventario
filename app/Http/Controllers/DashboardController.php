@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
+     
+
     public function blog()
     {
         return view('home');
@@ -29,6 +32,9 @@ class DashboardController extends Controller
     public function entradas()
     {
         return view('admin.entradas');
+    } public function usuarios()
+    {
+        return view('admin.usuarios');
     }
 
     public function salidas()

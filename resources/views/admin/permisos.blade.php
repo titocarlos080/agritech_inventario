@@ -7,7 +7,13 @@
 @stop
 
 @section('content')
-@livewire("permisos.index")
-
+<div class="container mt-4">
+    <div class="card mb-4">
+        <div class="card-body">
+        @livewire("permisos.index")
+        </div>
+    </div>
+    
+</div>
 
 @stop

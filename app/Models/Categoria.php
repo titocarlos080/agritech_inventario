@@ -10,13 +10,22 @@ class Categoria extends Pivot
     //
     public $timestamps = true;
  
-    // Especificar los atributos que se pueden asignar masivamente.
-    protected $table = 'categorias';
-    protected $fillable = ['nombre'];
-    public function productos(): HasMany
-    {
-        return $this->hasMany(Producto::class, 'id_categoria');
-    }
-    
+      // Tabla asociada a este modelo
+      protected $table = 'categorias';
+
+      // Clave primaria de la tabla
+      protected $primaryKey = 'categoria_id';
+  
+      // Campos que se pueden asignar en masa
+      protected $fillable = [
+          'nombre',
+          'descripcion',
+      ];
+  
+      // Relaciones con otros modelos (si las hay)
+      public function productos()
+      {
+          return $this->hasMany(Producto::class, 'categoria_id', 'categoria_id');
+      }
 
 }

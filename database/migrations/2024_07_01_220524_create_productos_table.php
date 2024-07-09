@@ -12,18 +12,23 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('productos', function (Blueprint $table) {
-            $table->id();
-            $table->string('nombre');
-            $table->string('imagen')->nullable();
-            $table->text('descripcion')->nullable();
-            $table->integer('stock');
-            $table->decimal('costo', 8, 2);
-            $table->decimal('precio', 8, 2);
-            $table->unsignedBigInteger('id_categoria');
-            $table->timestamps();
-            
-            $table->foreign('id_categoria')->references('id')->on('categorias')->onDelete('cascade');
-        });
+                $table->id('producto_id'); // Clave primaria personalizada
+                $table->string('codigo_barra')->nullable();
+                $table->string('nombre');
+                $table->text('descripcion')->nullable();
+                $table->date('fecha_venc');
+                $table->string('imagen_url');
+                $table->decimal('costo_unitario', 10, 2);
+                $table->integer('demanda_anual');
+                $table->integer('punto_reorden');
+                $table->integer('stock_actual');
+                $table->integer('stock_minimo');
+                $table->foreignId('categoria_id')->constrained('categorias', 'categoria_id'); // Clave foránea para 'categorias'
+                $table->foreignId('unidad_medida_id')->constrained('unidad_medidas', 'unidad_medida_id'); // Clave foránea para 'unidad_medidas'
+                $table->timestamps();
+            });
+        
+      
     }
 
     /**

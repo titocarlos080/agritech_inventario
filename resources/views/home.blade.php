@@ -1,15 +1,31 @@
-@extends('adminlte::page')
 
+@extends('adminlte::page')
 @section('title', 'agritech')
 
 @section('content_header')
-<h1>Inventarios</h1>
 @stop
 
 @section('content')
-<div class="content bg-dark p-1">
+  
+<div class="container mt-4">
 
+   <div class="card mb-4">
+        <div class="card-body">
+        @livewire("home.index")
+        </div>
+    </div>
+    <div class="card mb-4">
+        <div class="card-body">
+            @livewire("estadisticas.linea-tiempo")
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-body">
+        @livewire("puntos-re-orden.index")
+        </div>
+    </div>
+    
 </div>
-
-
+ </div>
 @stop

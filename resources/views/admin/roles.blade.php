@@ -7,7 +7,25 @@
 @stop
 
 @section('content')
-@livewire("roles.index")
+<div class="container mt-4">
+    <div class="card mb-4">
+        <div class="card-body">
+            @livewire("roles.index")
+        </div>
+    </div>
+    
+    <div class="card mb-4">
+        <div class="card-body">
+            @livewire("tipo-agentes.index")
+        </div>
+    </div>
+     <div class="card mb-4">
+        <div class="card-body">
+            @livewire("agentes.index")
+        </div>
+    </div>
+</div>
 
+  
 
 @stop

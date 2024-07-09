@@ -9,6 +9,7 @@
      <style>
         body {
             background-color: #28a745; /* Fondo verde campo */
+            background:url('vendor/adminlte/dist/img/fondo_agritech.png') ;
             background-size: cover;
             display: flex;
             justify-content: center;
@@ -34,7 +35,7 @@
             <a href="#"><b>Agritech</b> SRL</a>
         </div>
         <div class="card">
-            <div class="card-body login-card-body">
+            <div class="card-body login-card-body bg-transparent absolute">
                 <p class="login-box-msg">Iniciar Sesion</p>
 
                 <form method="POST" action="{{ route('login') }}">

@@ -3,11 +3,17 @@
 @section('title', 'agritech')
 
 @section('content_header')
-<h1>PRODUCTOS</h1>
 @stop
 
 @section('content')
-@livewire("productos.index")
-
+<div class="container mt-4">
+    <div class="card mb-4">
+        <div class="card-body">
+        @livewire("productos.index")
+        </div>
+    </div>
+    
+</div>
+ 
 
 @stop

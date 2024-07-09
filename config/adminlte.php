@@ -16,7 +16,7 @@ return [
 
     'title' => 'Agritech',
     'title_prefix' => '',
-    'title_postfix' => ' ',
+    'title_postfix' => '',
 
     /*
     |--------------------------------------------------------------------------
@@ -31,7 +31,7 @@ return [
     */
 
     'use_ico_only' => true,
-    'use_full_favicon' => false,
+    'use_full_favicon' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -84,7 +84,7 @@ return [
     */
 
     'auth_logo' => [
-        'enabled' => false,
+        'enabled' => true,
         'img' => [
             'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
             'alt' => 'Auth Logo',
@@ -134,9 +134,9 @@ return [
     */
 
     'usermenu_enabled' => true,
-    'usermenu_header' => false,
-    'usermenu_header_class' => 'bg-primary',
-    'usermenu_image' => false,
+    'usermenu_header' => true,
+    'usermenu_header_class' => '',
+    'usermenu_image' => true,
     'usermenu_desc' => false,
     'usermenu_profile_url' => false,
 
@@ -155,7 +155,7 @@ return [
     'layout_topnav' => null,
     'layout_boxed' => null,
     'layout_fixed_sidebar' => true,
-    'layout_fixed_navbar' => null,
+    'layout_fixed_navbar' => true,
     'layout_fixed_footer' => null,
     'layout_dark_mode' => null,
 
@@ -176,7 +176,7 @@ return [
     'classes_auth_body' => '',
     'classes_auth_footer' => '',
     'classes_auth_icon' => '',
-    'classes_auth_btn' => 'btn-flat btn-primary',
+    'classes_auth_btn' => ' ',
 
     /*
     |--------------------------------------------------------------------------
@@ -215,13 +215,13 @@ return [
     */
 
     'sidebar_mini' => 'lg',
-    'sidebar_collapse' => false,
+    'sidebar_collapse' => true,
     'sidebar_collapse_auto_size' => false,
-    'sidebar_collapse_remember' => false,
+    'sidebar_collapse_remember' => true,
     'sidebar_collapse_remember_no_transition' => true,
     'sidebar_scrollbar_theme' => 'os-theme-light',
     'sidebar_scrollbar_auto_hide' => 'l',
-    'sidebar_nav_accordion' => true,
+    'sidebar_nav_accordion' => false,
     'sidebar_nav_animation_speed' => 200,
 
     /*
@@ -297,21 +297,26 @@ return [
         // Navbar items:
         [
             'type' => 'navbar-search',
-            'text' => 'search',
-            'topnav_right' => true,
+            'text' => 'search',          // Placeholder for the underlying input.
+            'topnav_right' => true,      // Or "topnav => true" to place on the left.
+            'url' => 'navbar/search',    // The url used to submit the data ('#' by default).
+            'method' => 'post',          // 'get' or 'post' ('get' by default).
+            'input_name' => 'searchVal', // Name for the underlying input ('adminlteSearch' by default).
+            'id' => 'navbarSearch'       // ID attribute for the underlying input (optional).
         ],
         [
             'type' => 'fullscreen-widget',
             'topnav_right' => true,
         ],
         [
-            'type' => 'link',
-            'text' => '',
-            'icon' => 'fas fa-adjust',
+            'type' => 'darkmode-widget',
+            'icon-enabled' => 'fas fa-moon',
+            'icon-disabled' => 'fas fa-sun',
+            'color-enabled' => 'white',
+            'color-disabled' => 'yellow',
             'topnav_right' => true,
-            'url' => '#',
-            'id' => 'theme-switcher'
         ],
+
         // Sidebar items:
         [
             'text' => 'blog',
@@ -359,8 +364,12 @@ return [
             'url' => 'admin/permisos',
         ],
         [
+            'text' => 'Usuarios',
+            'icon' => 'fas fa-users',  // Cambiado a un ícono de usuarios
+            'url' => 'admin/usuarios',
+        ], [
             'text' => 'Roles',
-            'icon' => 'fas fa-user-tag',
+            'icon' => 'fas fa-user-shield',  // Cambiado a un ícono de roles o configuración
             'url' => 'admin/roles',
         ],
         ['header' => 'Soporte'],
@@ -374,12 +383,7 @@ return [
             'icon' => 'fas fa-chart-pie',
             'url' => 'admin/estadisticas',
         ],
-        // side right
-        [
-            'header' => 'Account Settings',
-            'key' => 'account_settings',
-            'right_sidebar' => true,
-        ],
+
 
     ],
 

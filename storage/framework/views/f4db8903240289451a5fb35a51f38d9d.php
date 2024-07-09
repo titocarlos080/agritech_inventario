@@ -1,30 +1,28 @@
 <div>
     <div>
-        <h3 class="title">Categorías</h3>
-        <button wire:click="vista_crear()" class="btn btn-primary"> <i class="fa fa-plus"></i> Nueva Categoría</button>
+        <button wire:click="vista_crear" class="btn btn-primary">
+            <i class="fa fa-plus"></i> Nueva Categoría
+        </button>
     </div>
-    
- 
+
     <div class="row bg bg-soft-success">
-        <div class="col-md-4 p-2">
-            <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $categorias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $categoria): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-box bg-<?php echo e($loop->index % 2 == 0 ? 'soft-purple' : 'soft-blue'); ?> mb-2 p-3 rounded">
-                        <h5 class="mb-2">  <?php echo e($categoria->nombre); ?></h5>
-                        <button wire:click="vista_editar(<?php echo e($categoria->id); ?>)" class="btn btn-primary">Editar</button>
-                        <button wire:click="eliminar_categoria(<?php echo e($categoria->id); ?>)" class="btn btn-danger">Eliminar</button>
-                    </div>
+        <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $categorias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $categoria): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <div class="card m-2">
+            <div class="card-body">
+                <div class="card-box bg-<?php echo e($loop->index % 2 == 0 ? 'soft-purple' : 'soft-blue'); ?> mb-2 p-3 rounded">
+                    <h5 class="mb-2"><?php echo e($categoria->nombre); ?></h5>
+                    <button wire:click="vista_editar(<?php echo e($categoria->categoria_id); ?>)" class="btn btn-primary">Editar</button>
+                    <button wire:click="eliminar_categoria(<?php echo e($categoria->categoria_id); ?>)" class="btn btn-danger">Eliminar</button>
                 </div>
             </div>
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><!--[if ENDBLOCK]><![endif]-->
         </div>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><!--[if ENDBLOCK]><![endif]-->
     </div>
 
     <!--[if BLOCK]><![endif]--><?php if($show_vista): ?>
-    <div class="modal fade show d-block" tabindex="-1" role="dialog" aria-labelledby="createCategoryModalLabel" aria-hidden="true" style="background-color: rgba(0, 0, 0, 0.5);">
+    <div class="modal fade show d-block" tabindex="-1" role="dialog" aria-labelledby="createProductoModalLabel" aria-hidden="true" style="background-color: rgba(0, 0, 0, 0.5);">
         <div class="modal-dialog" role="document">
-            <div class="modal-content" style="background-color: cadetblue; color: white;">
+            <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="createCategoryModalLabel">CREAR NUEVA CATEGORÍA</h4>
                     <button wire:click="$set('show_vista', false)" type="button" class="close" aria-label="Close">
@@ -47,7 +45,7 @@ unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
                 </div>
                 <div class="modal-footer">
                     <button wire:click="$set('show_vista', false)" type="button" class="btn btn-secondary">Cancelar</button>
-                    <button wire:click="crear_categoria()" type="button" class="btn btn-success">Crear Categoría</button>
+                    <button wire:click="crear_categoria" type="button" class="btn btn-success">Crear Categoría</button>
                 </div>
             </div>
         </div>
@@ -57,7 +55,7 @@ unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
     <!--[if BLOCK]><![endif]--><?php if($show_editar): ?>
     <div class="modal fade show d-block" tabindex="-1" role="dialog" aria-labelledby="editCategoryModalLabel" aria-hidden="true" style="background-color: rgba(0, 0, 0, 0.5);">
         <div class="modal-dialog" role="document">
-            <div class="modal-content" style="background-color: cadetblue; color: white;">
+            <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="editCategoryModalLabel">EDITAR CATEGORÍA</h4>
                     <button wire:click="$set('show_editar', false)" type="button" class="close" aria-label="Close">
@@ -88,19 +86,20 @@ unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
     <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
 
     <script>
-        document.addEventListener('livewire:initialized', () => {
-            Livewire.on('categoria-creada', (message) => {
-                alert(message);
+        document.addEventListener('livewire:load', () => {
+            Livewire.on('categoria-creada', event => {
+                alert(event.message);
             });
-            Livewire.on('categoria-error', (message) => {
-                alert(message);
+            Livewire.on('categoria-error', event => {
+                alert(event.message);
             });
-            Livewire.on('categoria-actualizado', (message) => {
-                alert(message);
+            Livewire.on('categoria-actualizado', event => {
+                alert(event.message);
             });
-            Livewire.on('categoria-eliminada', (message) => {
-                alert(message);
+            Livewire.on('categoria-eliminada', event => {
+                alert(event.message);
             });
         });
     </script>
-</div><?php /**PATH D:\SEMESTRE_1_2024\TALLER_DE_GRADO_1\taller_grado\resources\views/livewire/categorias/index.blade.php ENDPATH**/ ?>
+</div>
+<?php /**PATH D:\SEMESTRE_1_2024\TALLER_DE_GRADO_1\taller_grado\resources\views/livewire/categorias/index.blade.php ENDPATH**/ ?>

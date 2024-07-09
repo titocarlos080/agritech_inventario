@@ -7,7 +7,17 @@
 @stop
 
 @section('content')
-@livewire("estadisticas.index")
+
+<div class="container mt-4">
+    <div class="card mb-4">
+        <div class="card-body">
+            @livewire("estadisticas.index")
+        </div>
+    </div>
+
+</div>
+
+ 
 
 
 @stop
